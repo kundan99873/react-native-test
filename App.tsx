@@ -1,28 +1,140 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import './global.css';
+import DrawerNavigator from './src/navigator/DrawerNavigator';
+import Login from './src/pages/auth/Login';
+import Register from './src/pages/auth/Register';
+import { RootStackParamList } from './src/utils/types';
+import Forgot from './src/pages/auth/Forgot';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+  // Define the Stack Navigator
+  const Stack = createNativeStackNavigator<RootStackParamList>();
+
+  const linking: LinkingOptions<RootStackParamList> = {
+    prefixes: ['myapp://'],
+    config: {
+      screens: {
+        Login: 'login',
+        Register: 'register',
+        Drawer: 'home',
+        Forgot: "forgot"
+      },
+    },
+  };
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer linking={linking}>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Forgot"
+            component={Forgot}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+        {/* <DrawerNavigator /> */}
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
 export default App;
+
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  */
+
+// import { NewAppScreen } from '@react-native/new-app-screen';
+// import {
+//   StatusBar,
+//   StyleSheet,
+//   Text,
+//   useColorScheme,
+//   View,
+// } from 'react-native';
+// import './global.css';
+// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+// import Login from './src/pages/Login';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// // import Login from './src/pages/Login';
+
+// function App() {
+//   const isDarkMode = useColorScheme() === 'dark';
+
+//   const Stack = createNativeStackNavigator();
+
+//   return (
+//     <NavigationContainer>
+//       <Stack.Screen name='Login' component={Login} />
+//     </NavigationContainer>
+//   );
+// }
+
+// export default App;
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  */
+
+// import { NewAppScreen } from '@react-native/new-app-screen';
+// import {
+//   StatusBar,
+//   StyleSheet,
+//   Text,
+//   useColorScheme,
+//   View,
+// } from 'react-native';
+// import './global.css';
+// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+// import Login from './src/pages/Login';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// // import Login from './src/pages/Login';
+
+// function App() {
+//   const isDarkMode = useColorScheme() === 'dark';
+
+//   const Stack = createNativeStackNavigator();
+
+//   return (
+//     // <SafeAreaProvider>
+//     //   <SafeAreaView>
+//     //     <StatusBar
+//     //       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+//     //       // className="bg-blue-700 text-white"
+//     //     />
+//     //     <Login />
+//     //   </SafeAreaView>
+//     // </SafeAreaProvider>
+//     <NavigationContainer>
+//       <Stack.Screen name='Login' component={Login} />
+//     </NavigationContainer>
+//   );
+// }
+
+// export default App;
