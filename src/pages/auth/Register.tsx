@@ -4,16 +4,21 @@ import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../../utils/types';
 
 type RegisterData = {
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
 };
 
-type RegisterScreenProps = NativeStackNavigationProp<RootStackParamList, "Register">
+type RegisterScreenProps = NativeStackNavigationProp<
+  RootStackParamList,
+  'Register'
+>;
 
 function Register({ navigation }: { navigation: RegisterScreenProps }) {
   const [data, setData] = useState<RegisterData>({
-    name: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
   });
@@ -28,15 +33,20 @@ function Register({ navigation }: { navigation: RegisterScreenProps }) {
           <Text className="text-base font-medium text-black mb-2">
             Enter Your Name
           </Text>
-          <TextInput
-            className="border border-gray-400 rounded-lg px-4 py-3 text-base text-black"
-            placeholder="Email"
-            keyboardType="default"
-            autoCapitalize="none"
-            placeholderTextColor="#999"
-            value={data?.name}
-            onChangeText={text => setData({ ...data, name: text })}
-          />
+          <View className="flex flex-row gap-3 w-full">
+            <TextInput
+              className="flex-1 border border-gray-400 rounded-lg px-4 py-3 text-base text-black"
+              placeholder="First Name"
+              value={data?.first_name}
+              onChangeText={text => setData({ ...data, first_name: text })}
+            />
+            <TextInput
+              className="flex-1 border border-gray-400 rounded-lg px-4 py-3 text-base text-black"
+              placeholder="Last Name"
+              value={data?.last_name}
+              onChangeText={text => setData({ ...data, last_name: text })}
+            />
+          </View>
         </View>
         <View className="mb-6">
           <Text className="text-base font-medium text-black mb-2">

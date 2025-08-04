@@ -58,14 +58,11 @@ function Login({ navigation }: { navigation: LoginScreenProps }) {
           />
         </View>
 
-        <TouchableOpacity
-          className="bg-blue-600 py-4 rounded-lg mt-2 active:bg-blue-700"
-          onPress={handleLogin}
-        >
-          <Text className="text-white text-center text-lg font-semibold">
-            Login
-          </Text>
-        </TouchableOpacity>
+        <TouchableOpacity className="bg-black py-4  rounded-lg mt-4 active:bg-black" onPress={handleLogin}>
+              <Text className="text-white text-center text-2xl font-semibold">
+                Login
+              </Text>
+            </TouchableOpacity>
 
         <View className="mt-4 flex-row justify-end">
           <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
@@ -77,6 +74,7 @@ function Login({ navigation }: { navigation: LoginScreenProps }) {
           <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text className="text-blue-600">Register</Text>
           </TouchableOpacity>
+          
         </View>
       </View>
     </View>

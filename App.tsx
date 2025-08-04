@@ -8,6 +8,8 @@ import Login from './src/pages/auth/Login';
 import Register from './src/pages/auth/Register';
 import { RootStackParamList } from './src/utils/types';
 import Forgot from './src/pages/auth/Forgot';
+import IntroScreen from './src/pages/Intro';
+import CarDetails from './src/pages/CarDetails';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,7 +24,8 @@ function App() {
         Login: 'login',
         Register: 'register',
         Drawer: 'home',
-        Forgot: "forgot"
+        Forgot: "forgot",
+        Intro: "intro",
       },
     },
   };
@@ -30,6 +33,11 @@ function App() {
     <SafeAreaProvider>
       <NavigationContainer linking={linking}>
         <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen
+            name="Intro"
+            component={IntroScreen}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen
             name="Login"
             component={Login}
@@ -43,6 +51,11 @@ function App() {
           <Stack.Screen
             name="Drawer"
             component={DrawerNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CarDetails"
+            component={CarDetails}
             options={{ headerShown: false }}
           />
           <Stack.Screen
