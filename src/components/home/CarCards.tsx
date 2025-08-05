@@ -8,14 +8,14 @@ export default function CarCards({
   carDetails: HomeCarCardDetails;
 }) {
   return (
-    <View className="bg-white rounded-2xl p-4 shadow-md shadow-black/10 my-4 mx-3">
+    <View className="bg-white rounded-2xl p-3 shadow-md shadow-black/10 my-2 mx-3">
       {/* Car Image with overlay */}
       <View className="relative overflow-hidden rounded-xl">
         <Image
           source={{
             uri: "https://di-uploads-pod1.dealerinspire.com/earlstewarttoyota/uploads/2025/01/img11.jpg",
           }}
-          className="w-full h-48 rounded-xl"
+          className="w-full h-52 rounded-xl"
           resizeMode="cover"
         />
 

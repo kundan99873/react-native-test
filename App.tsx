@@ -9,7 +9,8 @@ import Register from './src/pages/auth/Register';
 import { RootStackParamList } from './src/utils/types';
 import Forgot from './src/pages/auth/Forgot';
 import IntroScreen from './src/pages/Intro';
-import CarDetails from './src/pages/CarDetails';
+import CarDetails from './src/pages/car/CarDetails';
+import BookCar from './src/pages/car/BookCar';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,8 +25,8 @@ function App() {
         Login: 'login',
         Register: 'register',
         Drawer: 'home',
-        Forgot: "forgot",
-        Intro: "intro",
+        Forgot: 'forgot',
+        Intro: 'intro',
       },
     },
   };
@@ -56,6 +57,11 @@ function App() {
           <Stack.Screen
             name="CarDetails"
             component={CarDetails}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BookCar"
+            component={BookCar}
             options={{ headerShown: false }}
           />
           <Stack.Screen
