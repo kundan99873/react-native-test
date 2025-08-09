@@ -1,4 +1,4 @@
-import { HomeCarCardDetails } from './types';
+import { HomeCarCardDetails, ReviewDetails } from './types';
 
 export const carList: HomeCarCardDetails[] = [
   {
@@ -100,5 +100,66 @@ export const carList: HomeCarCardDetails[] = [
     fuel_type: 'petrol',
     number_of_seats: 5,
     ratings: 4.3,
+  },
+];
+
+
+export const reviews: ReviewDetails[] = [
+  {
+    name: 'Aarav Mehta',
+    rating: 5,
+    comment: 'Excellent service and great experience!',
+    image: 'https://randomuser.me/api/portraits/men/1.jpg',
+  },
+  {
+    name: 'Ishita Sharma',
+    rating: 4,
+    comment: 'Very satisfied with the product quality.',
+    image: 'https://randomuser.me/api/portraits/women/2.jpg',
+  },
+  {
+    name: 'Rohan Deshmukh',
+    rating: 3,
+    comment: 'It was okay, expected better.',
+  },
+  {
+    name: 'Sanya Kapoor',
+    rating: 5,
+    comment: 'Loved it! Will recommend to friends.',
+    image: 'https://randomuser.me/api/portraits/women/4.jpg',
+  },
+  {
+    name: 'Vivaan Iyer',
+    rating: 2,
+    comment: 'Not up to the mark. Needs improvement.',
+  },
+  {
+    name: 'Ananya Reddy',
+    rating: 4,
+    comment: 'Really nice experience overall.',
+    image: 'https://randomuser.me/api/portraits/women/6.jpg',
+  },
+  {
+    name: 'Kabir Joshi',
+    rating: 5,
+    comment: 'Fantastic support team and fast delivery!',
+    image: 'https://randomuser.me/api/portraits/men/7.jpg',
+  },
+  {
+    name: 'Meera Nair',
+    rating: 3,
+    comment: 'Decent, but can be better.',
+  },
+  {
+    name: 'Arjun Bhatt',
+    rating: 4,
+    comment: 'Pretty good experience with quick resolution.',
+    image: 'https://randomuser.me/api/portraits/men/9.jpg',
+  },
+  {
+    name: 'Diya Chatterjee',
+    rating: 5,
+    comment: 'Absolutely amazing. Will use again!',
+    image: 'https://randomuser.me/api/portraits/women/10.jpg',
   },
 ];

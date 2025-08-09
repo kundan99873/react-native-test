@@ -77,7 +77,7 @@ export default function BookCar({
   return (
     <View className="flex-1 bg-gray-100">
       {/* Top Bar */}
-      <View className="sticky top-0 z-10 px-4 pt-10 pb-4 bg-white flex-row justify-between items-center shadow-md">
+      <View className="sticky top-0 z-10 p-4 bg-white flex-row justify-between items-center shadow-md">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           className="p-2 rounded-full bg-gray-100"

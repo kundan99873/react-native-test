@@ -158,8 +158,6 @@
 
 // export default HomeScreen;
 
-
-
 import React, { useRef, useState } from 'react';
 import {
   Animated,
@@ -231,55 +229,49 @@ const HomeScreen = ({ navigation }: { navigation: HomeScreenProps }) => {
 
   return (
     <View className="flex-1 bg-gray-100">
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Search Bar */}
-        <View className="m-6 z-10">
-          <View className="flex-row gap-4 justify-center items-center">
-            <TextInput
-              className="border border-gray-400 w-[85%] rounded-lg px-4 py-2 text-base text-black"
-              placeholder="Search"
-              keyboardType="default"
-              autoCapitalize="none"
-              placeholderTextColor="#999"
-              value={search}
-              onChangeText={(text: string): void => setSearch(text)}
-            />
+      <View className="m-6 z-10">
+        <View className="flex-row gap-4 justify-center items-center">
+          <TextInput
+            className="border border-gray-400 w-[85%] rounded-lg px-4 py-2 text-base text-black"
+            placeholder="Search"
+            keyboardType="default"
+            autoCapitalize="none"
+            placeholderTextColor="#999"
+            value={search}
+            onChangeText={(text: string): void => setSearch(text)}
+          />
+          <TouchableOpacity
+            className="p-2 rounded-full border border-gray-300 bg-white"
+            onPress={openPanel}
+          >
+            <MaterialDesignIcons name="filter" size={24} color="#000" />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Filter Tags */}
+      <View className="flex flex-row flex-wrap gap-2 mx-6">
+        {filterOptions.map((item: string, index: number) => (
+          <View
+            key={index}
+            className="relative px-3 py-2 pr-8 bg-blue-100 rounded-full"
+          >
+            <Text className="text-blue-700 font-medium capitalize">{item}</Text>
             <TouchableOpacity
-              className="p-2 rounded-full border border-gray-300 bg-white"
-              onPress={openPanel}
+              className="absolute right-2 top-2"
+              onPress={() => removeFilter(item)}
             >
-              <MaterialDesignIcons name="filter" size={24} color="#000" />
+              <MaterialDesignIcons
+                name="close-circle"
+                size={16}
+                color="#3B82F6"
+              />
             </TouchableOpacity>
           </View>
-        </View>
+        ))}
+      </View>
 
-        {/* Filter Tags */}
-        <View className="flex flex-row flex-wrap gap-2 mx-6">
-          {filterOptions.map((item: string, index: number) => (
-            <View
-              key={index}
-              className="relative px-3 py-2 pr-8 bg-blue-100 rounded-full"
-            >
-              <Text className="text-blue-700 font-medium capitalize">
-                {item}
-              </Text>
-              <TouchableOpacity
-                className="absolute right-2 top-2"
-                onPress={() => removeFilter(item)}
-              >
-                <MaterialDesignIcons
-                  name="close-circle"
-                  size={16}
-                  color="#3B82F6"
-                />
-              </TouchableOpacity>
-            </View>
-          ))}
-        </View>
-
+      <ScrollView>
         {/* Car Cards */}
         <View className="mx-2 mb-10">
           {carList.map((item: HomeCarCardDetails) => (

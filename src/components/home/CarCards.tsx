@@ -45,6 +45,7 @@ export default function CarCards({
         </View>
         <Text className="text-blue-600 font-bold text-xl">
           ₹{carDetails.price}
+          <Text className='text-xs text-gray-600'>/ hours</Text>
         </Text>
       </View>
 

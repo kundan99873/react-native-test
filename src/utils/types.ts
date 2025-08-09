@@ -29,3 +29,11 @@ export type HomeCarCardDetails = {
   number_of_seats: number;
   ratings: number;
 };
+
+
+export type ReviewDetails = {
+  name: string;
+  rating: number;
+  comment: string;
+  image?: string;
+};

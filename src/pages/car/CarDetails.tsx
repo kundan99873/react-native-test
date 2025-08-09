@@ -13,6 +13,8 @@ import MaterialDesignIcons from '@react-native-vector-icons/material-design-icon
 import { HomeCarCardDetails, RootStackParamList } from '../../utils/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
+import ReviewCard from '../../components/home/ReviewCard';
+import { reviews } from '../../utils/data';
 
 type CarDetailsRouteProp = RouteProp<RootStackParamList, 'CarDetails'>;
 type CarDetailsScreenProps = NativeStackNavigationProp<
@@ -44,7 +46,7 @@ export default function CarDetails({
   return (
     <View className="flex-1 bg-gray-100">
       {/* Top Bar */}
-      <View className="sticky top-0 z-10 px-4 pt-10 pb-4 bg-white flex-row justify-between items-center shadow-md">
+      <View className="sticky top-0 z-10 p-4 bg-white flex-row justify-between items-center shadow-md">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           className="p-2 rounded-full bg-gray-100"
@@ -68,73 +70,69 @@ export default function CarDetails({
       </View>
 
       {/* Scrollable Content */}
-      <ScrollView className="mb-28">
-        <Image
-          source={{
-            uri: 'https://di-uploads-pod1.dealerinspire.com/earlstewarttoyota/uploads/2025/01/img11.jpg',
-          }}
-          className="w-full h-64"
-          resizeMode="cover"
-        />
+      <Image
+        source={{
+          uri: 'https://di-uploads-pod1.dealerinspire.com/earlstewarttoyota/uploads/2025/01/img11.jpg',
+        }}
+        className="w-full h-64"
+        resizeMode="cover"
+      />
 
-        {/* Details */}
-        <View className="p-6">
-          {/* Car Name & Rating */}
-          <View className="flex-row justify-between items-center mb-3">
-            <Text className="text-2xl font-bold">{car.name}</Text>
-            <View className="flex-row items-center gap-1">
-              <MaterialDesignIcons name="star" size={20} color="#facc15" />
-              <Text className="text-base text-gray-800 font-semibold">
-                {car.ratings}
-              </Text>
-            </View>
+      {/* Details */}
+      <View className="p-6">
+        {/* Car Name & Rating */}
+        <View className="flex-row justify-between items-center mb-3">
+          <Text className="text-2xl font-bold">{car.name}</Text>
+          <View className="flex-row items-center gap-1">
+            <MaterialDesignIcons name="star" size={20} color="#facc15" />
+            <Text className="text-base text-gray-800 font-semibold">
+              {car.ratings}
+            </Text>
           </View>
+        </View>
 
-          {/* Info Icons */}
-          <View className="flex-row justify-around mb-4 bg-white py-3 rounded-xl shadow-sm">
-            <View className="items-center">
-              <MaterialDesignIcons name="steering" size={26} color="#2563eb" />
-              <Text className="mt-1 text-gray-700 capitalize">{car.type}</Text>
-            </View>
-            <View className="items-center">
-              <MaterialDesignIcons
-                name="gas-station"
-                size={26}
-                color="#2563eb"
-              />
-              <Text className="mt-1 text-gray-700 capitalize">
-                {car.fuel_type}
-              </Text>
-            </View>
-            <View className="items-center">
-              <MaterialDesignIcons name="car-seat" size={26} color="#2563eb" />
-              <Text className="mt-1 text-gray-700">
-                {car.number_of_seats} Seats
-              </Text>
-            </View>
+        {/* Info Icons */}
+        <View className="flex-row justify-around mb-4 bg-white py-3 rounded-xl shadow-sm">
+          <View className="items-center">
+            <MaterialDesignIcons name="steering" size={26} color="#2563eb" />
+            <Text className="mt-1 text-gray-700 capitalize">{car.type}</Text>
           </View>
+          <View className="items-center">
+            <MaterialDesignIcons name="gas-station" size={26} color="#2563eb" />
+            <Text className="mt-1 text-gray-700 capitalize">
+              {car.fuel_type}
+            </Text>
+          </View>
+          <View className="items-center">
+            <MaterialDesignIcons name="car-seat" size={26} color="#2563eb" />
+            <Text className="mt-1 text-gray-700">
+              {car.number_of_seats} Seats
+            </Text>
+          </View>
+        </View>
 
-          {/* Tabs */}
-          <View className="flex-row justify-around mb-4 bg-blue-50 p-1 rounded-xl">
-            {(['about', 'review'] as const).map(tab => (
-              <TouchableOpacity
-                key={tab}
-                onPress={() => setActiveTab(tab)}
-                className={`px-5 py-2 rounded-xl ${
-                  activeTab === tab ? 'bg-blue-600' : ''
+        {/* Tabs */}
+        <View className="flex-row justify-around mb-4 bg-blue-50 p-1 rounded-xl">
+          {(['about', 'review'] as const).map(tab => (
+            <TouchableOpacity
+              key={tab}
+              onPress={() => setActiveTab(tab)}
+              className={`px-5 py-2 rounded-xl ${
+                activeTab === tab ? 'bg-blue-600' : ''
+              }`}
+            >
+              <Text
+                className={`text-sm font-medium ${
+                  activeTab === tab ? 'text-white' : 'text-blue-700'
                 }`}
               >
-                <Text
-                  className={`text-sm font-medium ${
-                    activeTab === tab ? 'text-white' : 'text-blue-700'
-                  }`}
-                >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
 
+        <ScrollView className="mb-28">
           {/* Tab Content */}
           {activeTab === 'about' ? (
             <View className="space-y-4">
@@ -196,38 +194,15 @@ export default function CarDetails({
             </View>
           ) : (
             <View className="space-y-4">
-              <View className="p-4 bg-white rounded-xl shadow-sm">
-                <View className="flex-row items-center gap-3 mb-2">
-                  <Image
-                    source={{
-                      uri: 'https://icon-library.com/images/small-user-icon/small-user-icon-13.jpg',
-                    }}
-                    className="h-10 w-10 rounded-full"
-                  />
-                  <View>
-                    <Text className="font-semibold">Kundan Kumar</Text>
-                    <View className="flex-row">
-                      {Array(5)
-                        .fill(null)
-                        .map((_, idx) => (
-                          <MaterialDesignIcons
-                            key={idx}
-                            name="star"
-                            color="#f59e0b"
-                            size={16}
-                          />
-                        ))}
-                    </View>
-                  </View>
+              {reviews.map((item, index: number) => (
+                <View key={index} className="mb-3">
+                  <ReviewCard review={item} />
                 </View>
-                <Text className="text-gray-700">
-                  Great service from the rental partner. Highly recommended.
-                </Text>
-              </View>
+              ))}
             </View>
           )}
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
 
       {/* Sticky Footer */}
       <View className="absolute bottom-0 left-0 right-0 bg-white p-4 shadow-md rounded-t-2xl flex-row justify-between items-center">
