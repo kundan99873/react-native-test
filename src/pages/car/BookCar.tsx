@@ -5,8 +5,6 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Pressable,
-  Linking,
   Share,
 } from 'react-native';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
@@ -134,7 +132,7 @@ export default function BookCar({
                   driverType === 'self_driver'
                     ? 'bg-[#236BFE]'
                     : 'bg-[#F6F6F6] text-black'
-                }  py-3 rounded-full w-44`}
+                }  py-3 rounded-full w-48`}
                 onPress={() => setDriverType('self_driver')}
               >
                 <Text
@@ -150,7 +148,7 @@ export default function BookCar({
                   driverType === 'with_driver'
                     ? 'bg-[#236BFE]'
                     : 'bg-[#F6F6F6] text-black'
-                } py-3 rounded-full w-44`}
+                } py-3 rounded-full w-48`}
                 onPress={() => setDriverType('with_driver')}
               >
                 <Text
@@ -162,11 +160,13 @@ export default function BookCar({
                 </Text>
               </TouchableOpacity>
             </View>
-            {driverType === "with_driver" && <View className="mx-6 rounded-full p-1 bg-gray-200 mt-4">
-              <Text className="text-center font-medium text-sm">
-                Additional Rs. 100/hr for Driver Cost
-              </Text>
-            </View>}
+            {driverType === 'with_driver' && (
+              <View className="mx-6 rounded-full p-1 bg-gray-200 mt-4">
+                <Text className="text-center font-medium text-sm">
+                  Additional Rs. 100/hr for Driver Cost
+                </Text>
+              </View>
+            )}
           </View>
           <View className="mb-4">
             <Text className="text-black text-xl font-medium mb-2">
@@ -175,26 +175,36 @@ export default function BookCar({
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
                 onPress={openDatePicker}
-                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-48 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-black font-semibold text-center py-1">
-                  {dayjs(date).format('MMM D, YYYY')}
-                </Text>
+                <View>
+                  <Text className="text-sm font-medium text-gray-500">
+                    Date
+                  </Text>
+                  <Text className="text-black font-semibold text-center py-1">
+                    {dayjs(date).format('MMM D, YYYY')}
+                  </Text>
+                </View>
                 <MaterialDesignIcons
                   name="calendar"
-                  size={20}
+                  size={28}
                   color="#236BFE"
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={openTimePicker}
-                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-black text-center font-semibold py-2">
-                  {dayjs(date).format('hh:mm')}
-                </Text>
-                <MaterialDesignIcons name="clock" size={20} color="#236BFE" />
+                <View>
+                  <Text className="text-sm font-medium text-gray-500">
+                    Time
+                  </Text>
+                  <Text className="text-black text-center font-semibold">
+                    {dayjs(date).format('hh:mm A')}
+                  </Text>
+                </View>
+                <MaterialDesignIcons name="clock" size={28} color="#236BFE" />
               </TouchableOpacity>
             </View>
           </View>
@@ -205,26 +215,36 @@ export default function BookCar({
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
                 onPress={openDatePicker}
-                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-black font-semibold text-center py-1">
-                  {dayjs(date).format('MMM D, YYYY')}
-                </Text>
+                <View>
+                  <Text className="text-sm font-medium text-gray-500">
+                    Date
+                  </Text>
+                  <Text className="text-black font-semibold text-center">
+                    {dayjs(date).format('MMM D, YYYY')}
+                  </Text>
+                </View>
                 <MaterialDesignIcons
                   name="calendar"
-                  size={20}
+                  size={28}
                   color="#236BFE"
                 />
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={openTimePicker}
-                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-black text-center font-semibold py-2">
-                  {dayjs(date).format('hh:mm')}
-                </Text>
-                <MaterialDesignIcons name="clock" size={20} color="#236BFE" />
+                <View>
+                  <Text className="text-sm font-medium text-gray-500">
+                    Time
+                  </Text>
+                  <Text className="text-black text-center font-semibold ">
+                    {dayjs(date).format('hh:mm A')}
+                  </Text>
+                </View>
+                <MaterialDesignIcons name="clock" size={28} color="#236BFE" />
               </TouchableOpacity>
             </View>
           </View>

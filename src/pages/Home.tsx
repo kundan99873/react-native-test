@@ -196,7 +196,7 @@ const HomeScreen = ({ navigation }: { navigation: HomeScreenProps }) => {
     setIsPanelOpen(true);
     Animated.parallel([
       Animated.timing(slideAnim, {
-        toValue: SCREEN_HEIGHT * 0.5,
+        toValue: SCREEN_HEIGHT * 0.3,
         duration: 400,
         useNativeDriver: false,
       }),
@@ -302,7 +302,7 @@ const HomeScreen = ({ navigation }: { navigation: HomeScreenProps }) => {
       {/* Sliding Panel */}
       <Animated.View
         style={{ top: slideAnim }}
-        className="absolute left-0 right-0 h-1/2 bg-white border-t border-gray-200 rounded-t-2xl p-5 z-20"
+        className="absolute left-0 right-0 h-2/3 bg-white border-t border-gray-200 rounded-t-2xl p-5 z-20"
       >
         <HomeFilter
           setFilterOptions={setFilterOptions}
