@@ -55,7 +55,7 @@ export default function BookCar({
     DateTimePickerAndroid.open({
       value: date,
       mode: 'date',
-      is24Hour: true,
+      // is24Hour: true,
       onChange: (_, selectedDate) => {
         if (selectedDate) setDate(selectedDate);
       },
@@ -67,7 +67,7 @@ export default function BookCar({
     DateTimePickerAndroid.open({
       value: date,
       mode: 'time',
-      is24Hour: true,
+      // is24Hour: true,
       onChange: (_, selectedTime) => {
         if (selectedTime) setDate(selectedTime);
       },
@@ -75,7 +75,7 @@ export default function BookCar({
   };
 
   return (
-    <View className="flex-1 bg-gray-100">
+    <View className="flex-1 bg-white">
       {/* Top Bar */}
       <View className="sticky top-0 z-10 p-4 bg-white flex-row justify-between items-center shadow-md">
         <TouchableOpacity
@@ -131,25 +131,42 @@ export default function BookCar({
             <View className="flex justify-center items-center flex-row gap-4">
               <TouchableOpacity
                 className={`${
-                  driverType === 'self_driver' ? 'bg-[#236BFE]' : 'bg-[#aaa8a8]'
-                } px-12 py-3 rounded-full w-44`}
+                  driverType === 'self_driver'
+                    ? 'bg-[#236BFE]'
+                    : 'bg-[#F6F6F6] text-black'
+                }  py-3 rounded-full w-44`}
                 onPress={() => setDriverType('self_driver')}
               >
-                <Text className="text-white text-base font-bold">
+                <Text
+                  className={`${
+                    driverType == 'self_driver' ? 'text-white' : 'text-black'
+                  } text-center text-base font-bold`}
+                >
                   Self Driver
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 className={`${
-                  driverType === 'with_driver' ? 'bg-[#236BFE]' : 'bg-[#aaa8a8]'
-                } px-12 py-3 rounded-full w-44`}
+                  driverType === 'with_driver'
+                    ? 'bg-[#236BFE]'
+                    : 'bg-[#F6F6F6] text-black'
+                } py-3 rounded-full w-44`}
                 onPress={() => setDriverType('with_driver')}
               >
-                <Text className="text-white text-base font-bold">
+                <Text
+                  className={`${
+                    driverType == 'with_driver' ? 'text-white' : 'text-black'
+                  } text-center text-base font-bold`}
+                >
                   With Driver
                 </Text>
               </TouchableOpacity>
             </View>
+            {driverType === "with_driver" && <View className="mx-6 rounded-full p-1 bg-gray-200 mt-4">
+              <Text className="text-center font-medium text-sm">
+                Additional Rs. 100/hr for Driver Cost
+              </Text>
+            </View>}
           </View>
           <View className="mb-4">
             <Text className="text-black text-xl font-medium mb-2">
@@ -158,21 +175,28 @@ export default function BookCar({
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
                 onPress={openDatePicker}
-                className="bg-blue-500 w-44 px-4 py-2 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-white font-semibold text-center py-1">{dayjs(date).format("MMM D, YYYY")}</Text>
-                <MaterialDesignIcons name="calendar" size={20} color="#fff" />
+                <Text className="text-black font-semibold text-center py-1">
+                  {dayjs(date).format('MMM D, YYYY')}
+                </Text>
+                <MaterialDesignIcons
+                  name="calendar"
+                  size={20}
+                  color="#236BFE"
+                />
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={openTimePicker}
-                className="bg-blue-500 w-44 px-4 py-1 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-white text-center font-semibold py-2">{dayjs(date).format("hh:mm")}</Text>
-                <MaterialDesignIcons name="clock" size={20} color="#fff" />
+                <Text className="text-black text-center font-semibold py-2">
+                  {dayjs(date).format('hh:mm')}
+                </Text>
+                <MaterialDesignIcons name="clock" size={20} color="#236BFE" />
               </TouchableOpacity>
             </View>
-
           </View>
           <View className="mb-4">
             <Text className="text-black text-xl font-medium mb-2">
@@ -181,21 +205,28 @@ export default function BookCar({
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
                 onPress={openDatePicker}
-                className="bg-blue-500 w-44 px-4 py-2 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-white font-semibold text-center py-1">{dayjs(date).format("MMM D, YYYY")}</Text>
-                <MaterialDesignIcons name="calendar" size={20} color="#fff" />
+                <Text className="text-black font-semibold text-center py-1">
+                  {dayjs(date).format('MMM D, YYYY')}
+                </Text>
+                <MaterialDesignIcons
+                  name="calendar"
+                  size={20}
+                  color="#236BFE"
+                />
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={openTimePicker}
-                className="bg-blue-500 w-44 px-4 py-1 rounded-full flex flex-row items-center justify-between"
+                className="bg-[#F4F6F6] w-44 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
-                <Text className="text-white text-center font-semibold py-2">{dayjs(date).format("hh:mm")}</Text>
-                <MaterialDesignIcons name="clock" size={20} color="#fff" />
+                <Text className="text-black text-center font-semibold py-2">
+                  {dayjs(date).format('hh:mm')}
+                </Text>
+                <MaterialDesignIcons name="clock" size={20} color="#236BFE" />
               </TouchableOpacity>
             </View>
-
           </View>
         </View>
       </ScrollView>
@@ -203,7 +234,9 @@ export default function BookCar({
       {/* Sticky Footer */}
       <View className="absolute bottom-0 left-0 right-0 bg-white p-4 shadow-md rounded-t-2xl flex-row justify-between items-center">
         <TouchableOpacity className="bg-[#236BFE] w-full py-3 rounded-full">
-          <Text className="text-white text-base font-bold text-center">Book Now</Text>
+          <Text className="text-white text-base font-bold text-center">
+            Pay Now
+          </Text>
         </TouchableOpacity>
       </View>
     </View>

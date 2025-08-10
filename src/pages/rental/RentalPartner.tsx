@@ -319,7 +319,7 @@ export default function RentalPartner({
         </View>
 
         {/* Stats */}
-        <View className="flex flex-row justify-between items-center px-4 py-2 mt-4">
+        <View className="flex flex-row justify-between items-center px-4 py-2 mt-4 mx-5">
           {rentalDetails.map(item => (
             <View
               key={item.name}
