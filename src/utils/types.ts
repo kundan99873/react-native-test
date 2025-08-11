@@ -7,6 +7,7 @@ export type RootStackParamList = {
   CarDetails: { car: HomeCarCardDetails };
   BookCar: { car: HomeCarCardDetails };
   RentalPartner: { id: number; };
+  CancelBooking: { id: number; };
 };
 
 export type RootDrawerParamList = {
@@ -17,6 +18,7 @@ export type RootDrawerParamList = {
 export type RootTabParamList = {
   Home: undefined;
   Settings: undefined;
+  Profile: undefined;
 };
 
 export type HomeCarCardDetails = {

@@ -12,6 +12,7 @@ import IntroScreen from './src/pages/Intro';
 import CarDetails from './src/pages/car/CarDetails';
 import BookCar from './src/pages/car/BookCar';
 import RentalPartner from './src/pages/rental/RentalPartner';
+import CancelCar from './src/pages/car/CancelCar';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -58,6 +59,11 @@ function App() {
           <Stack.Screen
             name="CarDetails"
             component={CarDetails}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CancelBooking"
+            component={CancelCar}
             options={{ headerShown: false }}
           />
           <Stack.Screen

@@ -32,7 +32,7 @@ export default function BookCar({
     'self_driver',
   );
   const [date, setDate] = useState(new Date());
-  const [returnDate, setReurnDate] = useState(new Date());
+  const [returnDate, setReturnDate] = useState(new Date());
 
   const handleShare = async () => {
     const shareText = `Check out this car: ${car.name}`;
@@ -49,25 +49,27 @@ export default function BookCar({
   // State
 
   // Open Date Picker
-  const openDatePicker = () => {
+  const openDatePicker = (type: 'date' | 'return_date') => {
     DateTimePickerAndroid.open({
       value: date,
       mode: 'date',
       // is24Hour: true,
       onChange: (_, selectedDate) => {
-        if (selectedDate) setDate(selectedDate);
+        if (selectedDate)
+          type === 'date' ? setDate(selectedDate) : setReturnDate(selectedDate);
       },
     });
   };
 
   // Open Time Picker
-  const openTimePicker = () => {
+  const openTimePicker = (type: 'time' | 'return_time') => {
     DateTimePickerAndroid.open({
       value: date,
       mode: 'time',
       // is24Hour: true,
       onChange: (_, selectedTime) => {
-        if (selectedTime) setDate(selectedTime);
+        if (selectedTime)
+          type === 'time' ? setDate(selectedTime) : setReturnDate(selectedTime);
       },
     });
   };
@@ -174,7 +176,7 @@ export default function BookCar({
             </Text>
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
-                onPress={openDatePicker}
+                onPress={() => openDatePicker('date')}
                 className="bg-[#F4F6F6] w-48 px-4 py-3 rounded-full flex flex-row items-center justify-between"
               >
                 <View>
@@ -193,7 +195,7 @@ export default function BookCar({
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={openTimePicker}
+                onPress={() => openTimePicker('time')}
                 className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
                 <View>
@@ -214,7 +216,7 @@ export default function BookCar({
             </Text>
             <View className="flex flex-row gap-4 justify-center">
               <TouchableOpacity
-                onPress={openDatePicker}
+                onPress={() => openDatePicker('return_date')}
                 className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
                 <View>
@@ -222,7 +224,7 @@ export default function BookCar({
                     Date
                   </Text>
                   <Text className="text-black font-semibold text-center">
-                    {dayjs(date).format('MMM D, YYYY')}
+                    {dayjs(returnDate).format('MMM D, YYYY')}
                   </Text>
                 </View>
                 <MaterialDesignIcons
@@ -233,7 +235,7 @@ export default function BookCar({
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={openTimePicker}
+                onPress={() => openTimePicker('return_time')}
                 className="bg-[#F4F6F6] w-48 px-5 py-3 rounded-full flex flex-row items-center justify-between"
               >
                 <View>
@@ -241,12 +243,19 @@ export default function BookCar({
                     Time
                   </Text>
                   <Text className="text-black text-center font-semibold ">
-                    {dayjs(date).format('hh:mm A')}
+                    {dayjs(returnDate).format('hh:mm A')}
                   </Text>
                 </View>
                 <MaterialDesignIcons name="clock" size={28} color="#236BFE" />
               </TouchableOpacity>
             </View>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('CancelBooking', { id: 323537 })
+              }
+            >
+              <Text>Cancel Booking</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

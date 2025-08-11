@@ -59,6 +59,7 @@ import { Text, View } from 'react-native';
 import { RootTabParamList } from '../utils/types';
 import HomeScreen from '../pages/Home';
 import MaterialDesignIcons from '@react-native-vector-icons/material-design-icons';
+import ProfileScreen from '../pages/ProfileScreen';
 
 function SettingsScreen() {
   return (
@@ -107,8 +108,8 @@ function TabNavigator() {
         
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+        name="Profile"
+        component={ProfileScreen}
         // options={{
         //   headerShown: false,
 
