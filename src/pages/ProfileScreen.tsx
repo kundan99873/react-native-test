@@ -45,7 +45,7 @@ export default function ProfileScreen({
     },
   ];
   return (
-    <View className='mx-4'>
+    <View className="px-4 bg-white h-screen">
       <View className="flex justify-center items-center mt-4">
         <Image
           source={{
@@ -56,19 +56,22 @@ export default function ProfileScreen({
         <Text className="font-medium">Kundan Chaudhary</Text>
       </View>
 
-      <View className='mt-6'> 
+      <View className="mt-6">
         {profileOptions.map(item => {
           return (
             <TouchableOpacity
               key={item.title}
               onPress={() => {
-                navigation.navigate("Intro");
+                navigation.navigate('MyProfile');
               }}
-              className='border-b border-[#F4F6F6] pb-2'
+              className="border-b border-[#F4F6F6] pb-2"
             >
-              <View className="flex flex-row gap-5 items-center mt-4 ">
-                <MaterialDesignIcons name='wallet' size={20}  />
-                <Text className="text-lg font-medium">{item.title}</Text>
+              <View className="flex flex-row items-center justify-between px-2">
+                <View className="flex flex-row gap-5 items-center mt-4">
+                  <MaterialDesignIcons name="wallet" size={20} />
+                  <Text className="text-lg font-medium">{item.title}</Text>
+                </View>
+                <MaterialDesignIcons name="arrow-right" size={20} />
               </View>
             </TouchableOpacity>
           );
