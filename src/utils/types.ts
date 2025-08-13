@@ -9,6 +9,8 @@ export type RootStackParamList = {
   BookCar: { car: HomeCarCardDetails };
   RentalPartner: { id: number; };
   CancelBooking: { id: number; };
+  MyWallet: undefined;
+  AddWallet: undefined;
 };
 
 export type RootDrawerParamList = {

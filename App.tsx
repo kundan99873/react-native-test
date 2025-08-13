@@ -14,6 +14,8 @@ import BookCar from './src/pages/car/BookCar';
 import RentalPartner from './src/pages/rental/RentalPartner';
 import CancelCar from './src/pages/car/CancelCar';
 import MyProfile from './src/pages/profile/MyProfile';
+import MyWallet from './src/pages/user/MyWallet';
+import AddWallet from './src/pages/user/AddWallet';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -85,6 +87,16 @@ function App() {
           <Stack.Screen
             name="Forgot"
             component={Forgot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MyWallet"
+            component={MyWallet}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="AddWallet"
+            component={AddWallet}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
