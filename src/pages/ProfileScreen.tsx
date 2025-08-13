@@ -62,7 +62,7 @@ export default function ProfileScreen({
             <TouchableOpacity
               key={item.title}
               onPress={() => {
-                navigation.navigate("Intro");
+                navigation.navigate("MyWallet");
               }}
               className='border-b border-[#F4F6F6] pb-2'
             >
