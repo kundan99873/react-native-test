@@ -14,11 +14,27 @@ import BookCar from './src/pages/car/BookCar';
 import RentalPartner from './src/pages/rental/RentalPartner';
 import CancelCar from './src/pages/car/CancelCar';
 import MyProfile from './src/pages/profile/MyProfile';
-import MyWallet from './src/pages/user/MyWallet';
-import AddWallet from './src/pages/user/AddWallet';
+import MyWallet from './src/pages/profile/MyWallet';
+import AddWallet from './src/pages/profile/AddWallet';
+import { useEffect, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+
+  const [isConnectedInternet, setIsConnectedInternet] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    const checkInternetConnection = NetInfo.addEventListener(state => {
+      console.log(state);
+      setIsConnectedInternet(state.isConnected ?? false);
+    });
+
+    return () => checkInternetConnection();
+  }, []);
+
+  console.log({ isConnectedInternet });
 
   // Define the Stack Navigator
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -107,83 +123,3 @@ function App() {
 }
 
 export default App;
-
-// /**
-//  * Sample React Native App
-//  * https://github.com/facebook/react-native
-//  *
-//  * @format
-//  */
-
-// import { NewAppScreen } from '@react-native/new-app-screen';
-// import {
-//   StatusBar,
-//   StyleSheet,
-//   Text,
-//   useColorScheme,
-//   View,
-// } from 'react-native';
-// import './global.css';
-// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-// import Login from './src/pages/Login';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// // import Login from './src/pages/Login';
-
-// function App() {
-//   const isDarkMode = useColorScheme() === 'dark';
-
-//   const Stack = createNativeStackNavigator();
-
-//   return (
-//     <NavigationContainer>
-//       <Stack.Screen name='Login' component={Login} />
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
-// /**
-//  * Sample React Native App
-//  * https://github.com/facebook/react-native
-//  *
-//  * @format
-//  */
-
-// import { NewAppScreen } from '@react-native/new-app-screen';
-// import {
-//   StatusBar,
-//   StyleSheet,
-//   Text,
-//   useColorScheme,
-//   View,
-// } from 'react-native';
-// import './global.css';
-// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-// import Login from './src/pages/Login';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// // import Login from './src/pages/Login';
-
-// function App() {
-//   const isDarkMode = useColorScheme() === 'dark';
-
-//   const Stack = createNativeStackNavigator();
-
-//   return (
-//     // <SafeAreaProvider>
-//     //   <SafeAreaView>
-//     //     <StatusBar
-//     //       barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-//     //       // className="bg-blue-700 text-white"
-//     //     />
-//     //     <Login />
-//     //   </SafeAreaView>
-//     // </SafeAreaProvider>
-//     <NavigationContainer>
-//       <Stack.Screen name='Login' component={Login} />
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
