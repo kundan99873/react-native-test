@@ -4,13 +4,15 @@ export type RootStackParamList = {
   Register: undefined;
   Drawer: undefined;
   Forgot: undefined;
-  MyProfile: undefined; 
+  MyProfile: undefined;
   CarDetails: { car: HomeCarCardDetails };
   BookCar: { car: HomeCarCardDetails };
   RentalPartner: { id: number; };
   CancelBooking: { id: number; };
   MyWallet: undefined;
   AddWallet: undefined;
+  NoInternet: undefined;
+  InviteFriend: undefined;
 };
 
 export type RootDrawerParamList = {
