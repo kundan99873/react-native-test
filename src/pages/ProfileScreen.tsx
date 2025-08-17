@@ -7,41 +7,47 @@ type ProfileScreenProps = NativeStackNavigationProp<
   RootStackParamList,
   'Drawer'
 >;
+
+type ProfileProps = {
+  icon: string;
+  title: string;
+  navigation: keyof RootStackParamList;
+};
 export default function ProfileScreen({
   navigation,
 }: {
   navigation: ProfileScreenProps;
 }) {
-  const profileOptions = [
+  const profileOptions: ProfileProps[] = [
     {
       icon: '',
       title: 'My Profile',
-      navigation: 'Profile',
+      navigation: 'MyProfile',
     },
     {
       icon: 'wallet',
       title: 'My Wallet',
-      navigation: 'Profile',
+      navigation: 'MyWallet',
     },
     {
       icon: 'order-bool-ascending',
       title: 'My Bookings',
-      navigation: 'Profile',
+      navigation: 'MyProfile',
     },
     {
       icon: '',
       title: 'Settings',
-      navigation: 'Profile',
+      navigation: 'MyProfile',
     },
     {
       icon: '',
       title: 'Privacy Policy',
-      navigation: 'Profile',
+      navigation: 'MyProfile',
     },
     {
       icon: '',
       title: 'Invites Friends',
-      navigation: 'Profile',
+      navigation: 'MyProfile',
     },
   ];
   return (
@@ -62,7 +68,7 @@ export default function ProfileScreen({
             <TouchableOpacity
               key={item.title}
               onPress={() => {
-                navigation.navigate('MyProfile');
+                navigation.navigate(item.navigation);
               }}
               className="border-b border-[#F4F6F6] pb-2"
             >
